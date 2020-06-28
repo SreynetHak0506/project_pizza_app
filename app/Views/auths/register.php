@@ -1,11 +1,17 @@
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
+<ul>
+<?php if(isset($messages)):?>
+<?= $messages->listErrors() ?>
+<?php endif?>
+
+</ul>
 <div class="auth">
   <div class="auth__header">
     
   </div>
   <div class="auth__body">
-    <form class="auth__form" autocomplete="off" action="/signin" method="post">
+    <form class="auth__form" autocomplete="off" action="/viewPeperoni" method="post">
       <div class="auth__form_body">
         <h3 class="auth__form_title">
         <img src="images/logo.svg" alt="" width="50">
@@ -30,6 +36,7 @@
             </label>
         </div>
         </div>
+
       </div>
       <div class="auth__form_actions">
         <button class="btn btn-primary btn-lg btn-block">
