@@ -20,15 +20,15 @@
         <div>
           <div class="form-group">
             <label class="text-uppercase small">Email</label>
-            <input type="email" class="form-control" placeholder="Enter email">
+            <input type="email" class="form-control" placeholder="Enter email" name="email">
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Password</label>
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" placeholder="Password" name="password">
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Address</label>
-            <textarea name=""  class="form-control" placeholder="Address"></textarea>
+            <textarea name=""  class="form-control" placeholder="Address" name="address"></textarea>
           </div>
           <div class="form-check">
             <label class="form-check-label">

@@ -16,14 +16,25 @@ class User extends BaseController
 		if($this->request->getMethod() == "post")
 		{
 			$rules = [	
-				'email'=>'required|letter',
-				'password'=>'required|min_length[8]|hide[password]',
-				'address'=>'required|min_line[2]|letter',
+				'email'=>'required',
+				'password'=>'required|min_length[8]',
+				'address'=>'required',
+				'role'=>'required',
 			];
-			if(!$this->validate($rules)){
-				$data['messages'] = $this->validator;
-			}else{
-
+			if($this->validate($rules)){
+				$user = new UserModel();
+				$email = $this->request->getVar('email');
+				$password = $this->request->getVar('password');
+				$address = $this->request->getVar('address');
+				$userData = array(
+					'email'=>$email ,
+					'password'=>$password,
+					'address'=>$address,
+				);
+				$user->insert($userData);
+				return redirect()->to('/');
+			// }else{
+			// 	$data['messages'] = $this->validator;
 			}
 		}
 		return view('auths/register');

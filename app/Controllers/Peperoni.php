@@ -6,7 +6,7 @@ class Peperoni extends BaseController
 	{
 		$peperoni = new PeperoniModel();
 		$data['peperonis'] = $peperoni->findAll();
-		return view('/index');		
+		return view('/index',$data);		
 	}
 	 
 	
@@ -28,20 +28,18 @@ class Peperoni extends BaseController
 		//insert to database
 		{
 		   $peperoni = new PeperoniModel();
-			$name = $this->request->getVar('name');
-			$price = $this->request->getVar('price');
-			$ingredient = $this->request->getVar('ingredients');
+
 			$peperoniData = array(
-				'name'=>$name,
-				'price'=>$price,
-				'ingredients'=>$ingredient,
+				'name' => $this->request->getVar('name'),
+				'price' => $this->request->getVar('price'),
+				'ingredients' => $this->request->getVar('ingredients'),
 			);
-			$peperoni->insert($peperoniData);
+			$peperoni->save($peperoniData);
 			return redirect()->to('/viewPeperoni');
 
 		}else {
 			$data['messages'] = $this->validator;
-			return view('/viewPeperoni',$data);
+			return view('/viewPeperoni');
 		}
 		
 	}

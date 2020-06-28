@@ -12,7 +12,7 @@
 					</a>
 				</div>
 				<hr>
-				<?php foreach( $peperonis as $peperoni): ?>
+				
 				<table class="table table-borderless table-hover">
 					<tr>
 						<th>Name</th>
@@ -20,19 +20,21 @@
 						<th>Price</th>
 						<th></th>
 					</tr>
+					<?php foreach( $peperonis as $peperoni): ?>
 					<tr>
 						<td class="pizzaName"><?= $peperoni['name'] ?></td>
 						<td><?= $peperoni['ingredients'] ?></td>
-						<td class="text-success font-weight-bolder"><?= $peperoni['price'] ?></td>
+						<td class="text-success font-weight-bolder"><?= $peperoni['price'].'$'; ?></td>
 						<td>
 							<a href="" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
 							<a href="" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
 						</td> 
 						
 					</tr>
+					<?php endforeach ?>
 				</table>
 
-				<?php endforeach ?>
+				
 			</div>
 			<div class="col-2"></div>
 		</div>
@@ -60,19 +62,19 @@
         <div class="modal-body text-right">
 			<form  action="/viewPeperoni" method="post">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Pizza name" >
+					<input type="text"  class="form-control" placeholder="Pizza name" name="name">
 				</div>
 				<div class="form-group">
-					<input type="number" class="form-control" placeholder="Prize in dollars" >
+					<input type="number"  class="form-control" placeholder="Prize in dollars" name="price">
 				</div>
 				<div class="form-group">
-					<textarea name="" placeholder="Ingredients" class="form-control" ></textarea>
+					<textarea name="" placeholder="Ingredients" class="form-control" name="ingredients"></textarea>
 				</div>
 			<a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	 &nbsp;
 		  <input type="submit" value="CREATE" class="createBtn text-warning">
+		  </form>
         </div>
-        </form>
       </div>
     </div>
   </div>
