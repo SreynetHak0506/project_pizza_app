@@ -16,8 +16,7 @@ class UserModel extends Model
         $this->insert([
                 'email'=>$user['email'],
                 'password'=>$user['password'],
-                'address'=>$user['address'],
-                'role'=>$user['role'],
+                'address'=>$user['address']
                 
             
         ]);

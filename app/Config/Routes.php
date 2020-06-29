@@ -33,10 +33,11 @@ $routes->setAutoRoute(true);
 // Routes for User
 	$routes->add('/', 'User::index');
 	$routes->add('signin', 'User::index');
-	$routes->add('/signup', 'User::register');
+	$routes->match(['get','post'],'/signup', 'User::register');
 
 	//Routes for Peperoni
 	$routes->add('viewPeperoni', 'Peperoni::index');
+	
 	
 
 /**

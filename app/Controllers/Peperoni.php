@@ -4,45 +4,38 @@ class Peperoni extends BaseController
 {
 	public function index()
 	{
-		$peperoni = new PeperoniModel();
-		$data['peperonis'] = $peperoni->findAll();
+		$pizza = new PeperoniModel();
+		$data['pizzas'] = $pizza->findAll();
 		return view('/index',$data);		
 	}
 	 
 	
-	public function addPeperoni()
+	public function peperoni()
 	{
-		$data=[];
 		helper(['form']);
-		$peperoni = new PeperoniModel();
-		if($this->request->getMethod() == "post")
-		{
-		$rules=[
-
-			 'name' =>'required',
-			 'price' => 'required',
-			 'ingredients'=>'required'
-
-		];
-		if($this->validate($rules))
-		//insert to database
-		{
-		   $peperoni = new PeperoniModel();
-
-			$peperoniData = array(
-				'name' => $this->request->getVar('name'),
-				'price' => $this->request->getVar('price'),
-				'ingredients' => $this->request->getVar('ingredients'),
-			);
-			$peperoni->save($peperoniData);
-			return redirect()->to('/viewPeperoni');
-
-		}else {
-			$data['messages'] = $this->validator;
-			return view('/viewPeperoni');
-		}
-		
-	}
+		$data = [];
+		if($this->request->getMethod() == "post"){
+			$rules = [
+				'name'=>'required',
+				'prize'=>'required',
+				'ingredients'=>'required'
+			];
+		    if(!$this->validate($rules)){
+				$data['validation'] = $this->validator;
+				return redirect()->to("/viewPeperoni");
+			}
+			else{			
+				$pizza = new PeperoniModel();
+				$pizzaData = array(
+					'name'=>$this->request->getVar('name'),
+					'prize'=>$this->request->getVar('prize'),
+					'ingredients'=>$this->request->getVar('ingredients'),
+				);
+				$pizza->addPeperoni($pizzaData);
+				return redirect()->to("/viewPeperoni");
+			}
+	    }	
+		return view('index',$data);
 }
 
 	//--------------------------------------------------------------------

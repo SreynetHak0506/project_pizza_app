@@ -7,7 +7,7 @@
 			<div class="col-2"></div>
 			<div class="col-8">
 				<div class="text-right">
-					<a href="" class="btn btn-warning btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createPizza">
+					<a href="/viewPeperoni" class="btn btn-warning btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createPizza">
 						<i class="material-icons float-left" data-toggle="tooltip" title="Add Pizza!" data-placement="left">add</i>&nbsp;Add
 					</a>
 				</div>
@@ -20,11 +20,11 @@
 						<th>Price</th>
 						<th></th>
 					</tr>
-					<?php foreach( $peperonis as $peperoni): ?>
+					<?php foreach( $pizzas as $pizza): ?>
 					<tr>
-						<td class="pizzaName"><?= $peperoni['name'] ?></td>
-						<td><?= $peperoni['ingredients'] ?></td>
-						<td class="text-success font-weight-bolder"><?= $peperoni['price'].'$'; ?></td>
+						<td class="pizzaName"><?= $pizza['name'] ?></td>
+						<td class="text-success font-weight-bolder"><?= $pizza['price'].'$'; ?></td>
+						<td><?= $pizza['ingredients'] ?></td>
 						<td>
 							<a href="" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
 							<a href="" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
@@ -60,7 +60,7 @@
 		<?php endif?>
 		</ul>
         <div class="modal-body text-right">
-			<form  action="/viewPeperoni" method="post">
+			<form  action="peperoni/peperoni" method="post">
 				<div class="form-group">
 					<input type="text"  class="form-control" placeholder="Pizza name" name="name">
 				</div>

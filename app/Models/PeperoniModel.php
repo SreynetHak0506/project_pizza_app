@@ -10,5 +10,15 @@ class PeperoniModel extends Model
     protected $returnType     = 'array';
     protected $allowedFields = [ 'name', 'price','ingredients'];
 
-    
+   
+    public function addPeperoni($pizza)
+    {
+        $this->insert([
+                'name'=>$pizza['name'],
+                'price'=>$pizza['price'],
+                'ingredients'=>$pizza['ingredients'],
+                
+            
+        ]);
+    }
 }
