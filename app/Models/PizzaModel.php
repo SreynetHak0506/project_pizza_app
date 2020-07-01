@@ -2,16 +2,16 @@
 
 use CodeIgniter\Model;
 
-class PeperoniModel extends Model
+class PizzaModel extends Model
 {
-    protected $table      = 'peperoni';
+    protected $table      = 'pizza';
     protected $primaryKey = 'id';
 
     protected $returnType     = 'array';
     protected $allowedFields = [ 'name', 'price','ingredients'];
 
    
-    public function addPeperoni($pizza)
+    public function createPizza($pizza)
     {
         $this->insert([
                 'name'=>$pizza['name'],

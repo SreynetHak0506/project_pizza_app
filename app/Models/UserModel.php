@@ -11,12 +11,13 @@ class UserModel extends Model
     protected $allowedFields = [ 'email', 'password','address','role'];
 
 
-    public function register($user)
+    public function registerUser($user)
     {
         $this->insert([
                 'email'=>$user['email'],
                 'password'=>$user['password'],
-                'address'=>$user['address']
+                'address'=>$user['address'],
+                'role'=>$user['role']
                 
             
         ]);

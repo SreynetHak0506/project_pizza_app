@@ -31,15 +31,16 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 // Routes for User
-	$routes->add('/', 'User::index');
-	$routes->add('signin', 'User::index');
-	$routes->match(['get','post'],'/signup', 'User::register');
+$routes->add('/', 'User::index');
+$routes->add('loginAccount', 'User::loginAccount');
+$routes->add('signup', 'User::signup');
+$routes->add('signin', 'User::logout');
+$routes->add('register','User::registerAccount');
 
-	//Routes for Peperoni
-	$routes->add('viewPeperoni', 'Peperoni::index');
-	
-	
 
+$routes->get('pizza','Pizza::index');
+$routes->get('delete/(:num)','Pizza::deletePizza/$1');
+$routes->get('edit/(:num)','Pizza::editPizza/$1');
 /**
  * --------------------------------------------------------------------
  * Additional Routing
