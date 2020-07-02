@@ -20,5 +20,5 @@
     </ul>
   </div>
 </nav>
-<?php $username = strstr(session()->get('email'),'@',true) ?>
+
             
