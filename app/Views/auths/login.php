@@ -6,7 +6,7 @@
       <img height="90" src="images/logo.svg" alt="">
     </div>
   </div>
-    <form class="auth__form" autocomplete="off" action="/pizza" method="post">
+    <form class="auth__form" autocomplete="off" action="/loginAccount" method="post">
 
       <div class="auth__form_body">
       <?php if(session()->get('success')) :?>

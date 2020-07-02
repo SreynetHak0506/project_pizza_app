@@ -10,40 +10,42 @@ class Pizza extends BaseController
 		return view('index',$data);
 	}
 	// add pizza to table pizza
-	public function addPizza(){
-		helper(['form']);
+	public function createPizza(){
 		$data = [];
 		if($this->request->getMethod() == "post"){
+			helper(['form']);
 			$rules = [
-				'name'=>'alpha_space|required',
-				'prize'=>'required|numeric|max_length[50]|min_length[1]|numeric',
-				'ingredients'=>'required'
-			];
-			// if differnt from rule above it will diplay error message
-		    if(!$this->validate($rules)){
-				$data['validation'] = $this->validator;
-				return redirect()->to("/pizza");
-			}
-			// insert data to table
-			else{			
-				$pizza = new PizzaModel();
+				'name'=>'required|alpha_space',
+				'price'=>'required|min_length[1]|max_length[50]',
+				
+			];	
+			 if($this->validate($rules)){
+				$pizzaModel = new PizzaModel();
+				$pizzaName = $this->request->getVar('name');
+				$pizzaPrice = $this->request->getVar('price')."$";
+				$pizzaIngredient = $this->request->getVar('ingredients');
 				$pizzaData = array(
-					'name'=>$this->request->getVar('name'),
-					'price'=>$this->request->getVar('price'),
-					'ingredients'=>$this->request->getVar('ingredients'),
+					'name'=>$pizzaName,
+					'price'=>$pizzaPrice,
+					'ingredients'=>$pizzaIngredient
 				);
-				$pizza->createPizza($pizzaData);
-				return redirect()->to("/pizza");
+				$pizzaModel->insert($pizzaData);
+
+			}else{
+				$sessionError = session();
+                		$validation = $this->validator;
+               			$sessionError->setFlashdata('error', $validation);
 			}
-	    }	
-		return view('index',$data);
+		}
+		return redirect()->to('/pizza');
+
 	}
 
 	// edit pizza data
 	public function editPizza($id)
 	{
 		$pizza = new PizzaModel();
-		$data['pizza'] = $pizza->find($id);
+		$data['pizzas'] = $pizza->find($id);
 		return view('index',$data);
 	}
 		// update piza data

@@ -37,7 +37,6 @@ $routes->add('signup', 'User::signup');
 $routes->add('signin', 'User::logout');
 $routes->add('register','User::registerAccount');
 
-
 $routes->get('pizza','Pizza::index');
 $routes->get('delete/(:num)','Pizza::deletePizza/$1');
 $routes->get('edit/(:num)','Pizza::editPizza/$1');

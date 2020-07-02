@@ -10,15 +10,4 @@ class PizzaModel extends Model
     protected $returnType     = 'array';
     protected $allowedFields = [ 'name', 'price','ingredients'];
 
-   
-    public function createPizza($pizza)
-    {
-        $this->insert([
-                'name'=>$pizza['name'],
-                'price'=>$pizza['price'],
-                'ingredients'=>$pizza['ingredients'],
-                
-            
-        ]);
-    }
 }

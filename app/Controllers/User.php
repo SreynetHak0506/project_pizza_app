@@ -2,7 +2,7 @@
 use App\Models\UserModel;
 class User extends BaseController
 {
-	// login form 
+	// login form for signin
 	public function index()
 	{
 		return view('auths/login');
@@ -31,6 +31,7 @@ class User extends BaseController
 			$email = $this->request->getVar('email');
 			if(!$this->validate($rules,$error)){
 				$data['message'] = $this->validator;
+				return view('auths/login',$data);
 			}else{
 				$model = new UserModel();
 				$user = $model->where('email',$email)->first();
@@ -42,7 +43,7 @@ class User extends BaseController
 			}
 
 		}
-		return view('auths/login',$data);
+		
 	}
 
 	public function setUserSession($user){
@@ -83,7 +84,7 @@ class User extends BaseController
 					'email'=>$email ,
 					'password'=>$password ,
 					'address'=>$address ,
-					'role'=>$role,
+					'role'=>$role ,
 					
 				];
 				$userModel->registerUser($userData);
