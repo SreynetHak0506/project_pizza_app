@@ -22,7 +22,7 @@ class Pizza extends BaseController
 			 if($this->validate($rules)){
 				$pizzaModel = new PizzaModel();
 				$pizzaName = $this->request->getVar('name');
-				$pizzaPrice = $this->request->getVar('price')."$";
+				$pizzaPrice = $this->request->getVar('price');
 				$pizzaIngredient = $this->request->getVar('ingredients');
 				$pizzaData = array(
 					'name'=>$pizzaName,

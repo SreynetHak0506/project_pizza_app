@@ -13,10 +13,12 @@
     <ul class="nav navbar-nav ml-auto">
       <li class="nav-item">
         <div class="row">
-            <a class="nav-link text-uppercase" href="/signin"><?=(session()->get('email'))?>|</a>
+            <a class="nav-link text-uppercase" href="/signin"><?=strstr(session()->get('email'),'@',true) ?>|</a>
             <a class="nav-link text-uppercase" href="signin">Logout</a>
         </div>
       </li>
     </ul>
   </div>
 </nav>
+<?php $username = strstr(session()->get('email'),'@',true) ?>
+            
